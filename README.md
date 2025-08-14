@@ -27,22 +27,42 @@
 ## 📂 프로젝트 구조 (Project Structure)
 
 ```
-ACTProject/
-├─ ACT-Project_DX11/            # 솔루션/프로젝트 루트
-│  ├─ Engine/                   # 엔진(코어) 레이어
-│  │  ├─ Core/                  # 엔트리/윈도우/타이밍/입력/로깅
-│  │  ├─ Graphics/              # DX11 디바이스/스왑체인/파이프라인/셰이더/리소스
-│  │  ├─ Scene/                 # GameObject, Component, System, Scene 관리
-│  │  ├─ Physics/               # Collider, BroadPhase(Octree), 충돌 판정/반응
-│  │  ├─ Animation/             # 상태 머신, 트랜지션, 이벤트
-│  │  ├─ Camera/                # 1·3인칭/컷신/디버그 카메라
-│  │  └─ Utils/                 # 수학(행렬/벡터), 파일 IO, 프로파일러
-│  ├─ Game/                     # 게임 레이어(플레이어/몬스터/오브젝트/스테이트)
-│  ├─ Shaders/                  # HLSL (.hlsl)
-│  ├─ Assets/                   # 모델/텍스처/애니메이션 데이터
-│  ├─ External/                 # 외부 라이브러리(IMGUI, DirectXTex 등 선택)
-│  └─ ACTProject.sln            # 솔루션
-└─ docs/                        # 문서, 스크린샷, 다이어그램
+Another Crab's Treasure (DirectX 11 Engine)
+│
+├── Engine (자체 제작 게임 엔진)
+│   ├── Core Systems & Managers (Singleton Pattern)
+│   │   └── Scene, Time, Input, Sound, Resource...
+│   │       - 엔진 전반의 핵심 기능과 매니저 클래스
+│   │       - 싱글톤 패턴으로 전역 접근 및 상태 관리
+│   ├── Rendering Pipeline
+│   │   └── Graphics, Camera, Light, Instancing (Flyweight)...
+│   │       - DirectX 11 기반 렌더링 처리
+│   │       - Flyweight 패턴을 활용한 인스턴싱 최적화
+│   ├── Physics System
+│   │   └── Collision, Rigidbody, Octree...
+│   │       - 충돌 감지 및 물리 연산 처리
+│   │       - 옥트리(Octree)를 통한 공간 분할 및 연산 효율화
+│   └── Game Object Model
+│       └── GameObject, Component, Transform (Component Pattern)
+│           - 컴포넌트 패턴 기반 객체 모델
+│           - 재사용성과 기능 확장성 강화
+│
+├── Client (게임 콘텐츠 및 로직)
+│   ├── Main.cpp (프로그램 진입점)
+│   │   - 엔진 초기화 및 게임 루프 실행
+│   ├── Controllers (State Pattern)
+│   │   └── Player, Monsters, Bosses...
+│   │       - 상태 패턴 기반의 캐릭터/오브젝트 동작 제어
+│   └── Game Scenes
+│       └── Title, In-Game...
+│           - 씬 전환 및 콘텐츠 구성
+│
+├── Shaders (HLSL)
+│   - GPU 연산 및 렌더링 파이프라인 전용 쉐이더 코드
+│
+└── Resources (Assets)
+    - 모델, 텍스처, 사운드 등 게임 리소스
+
 ```
 
 ---
